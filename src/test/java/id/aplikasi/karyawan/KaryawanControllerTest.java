@@ -9,6 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -23,8 +25,24 @@ class KaryawanControllerTest {
     @Test
     @DisplayName("Test Tambah Karyawan")
     public void testTambahKaryawan() {
-        controller.tambahKaryawan(1, "John Doe", "Manager");
-        assertEquals(1, controller.semuaKaryawan().size());
+        controller.tambahKaryawan(1, "Pharrel", "Manager");
+        assertEquals(2, controller.semuaKaryawan().size());
+        System.out.println("Test Passed");
+    }
+
+    @Test
+    @DisplayName("Test List Karyawan")
+    public void testSemuaKaryawan() {
+        controller.tambahKaryawan(1, "William", "Manager");
+        controller.tambahKaryawan(2, "Pharrel", "Developer");
+
+        List<KaryawanModel> daftarKaryawan = controller.semuaKaryawan();
+
+        assertEquals(2, daftarKaryawan.size());
+
+        assertEquals("William", daftarKaryawan.get(0).getNama());
+        assertEquals("IT", daftarKaryawan.get(1).getJabatan());
+
         System.out.println("Test Passed");
     }
 
@@ -43,10 +61,10 @@ class KaryawanControllerTest {
     @DisplayName("Test Perbarui Karyawan")
     public void testPerbaruiKaryawan() {
         controller.tambahKaryawan(1, "John Doe", "Manager");
-        controller.perbaruiKaryawan(1, "John Smith", "Director");
+        controller.perbaruiKaryawan(1, "Setya", "CEO");
         KaryawanModel karyawan = controller.karyawanById(1);
-        assertEquals("John Smith", karyawan.getNama());
-        assertEquals("Director", karyawan.getJabatan());
+        assertEquals("Setya", karyawan.getNama());
+        assertEquals("CEO", karyawan.getJabatan());
         System.out.println("Test Passed");
     }
 
@@ -62,7 +80,5 @@ class KaryawanControllerTest {
     public void tearDown() {
         controller = null;
     }
-
-
 
 }
