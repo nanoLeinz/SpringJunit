@@ -25,6 +25,7 @@ class KaryawanControllerTest {
     public void testTambahKaryawan() {
         controller.tambahKaryawan(1, "John Doe", "Manager");
         assertEquals(1, controller.semuaKaryawan().size());
+        System.out.println("Test Passed");
     }
 
     @Test
@@ -35,6 +36,7 @@ class KaryawanControllerTest {
         assertNotNull(karyawan);
         assertEquals("Jane Doe", karyawan.getNama());
         assertEquals("Developer", karyawan.getJabatan());
+        System.out.println("Test Passed");
     }
 
     @Test
@@ -45,6 +47,7 @@ class KaryawanControllerTest {
         KaryawanModel karyawan = controller.karyawanById(1);
         assertEquals("John Smith", karyawan.getNama());
         assertEquals("Director", karyawan.getJabatan());
+        System.out.println("Test Passed");
     }
 
     @Test
@@ -53,6 +56,7 @@ class KaryawanControllerTest {
         controller.tambahKaryawan(1, "John Doe", "Manager");
         controller.hapusKaryawan(1);
         assertEquals(0, controller.semuaKaryawan().size());
+        System.out.println("Test Passed");
     }
     @AfterEach
     public void tearDown() {
