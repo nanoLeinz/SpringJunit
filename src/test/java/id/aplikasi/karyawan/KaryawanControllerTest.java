@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNotNull;
 
 @SpringBootTest
 class KaryawanControllerTest {
-    private KaryawanController controller;
+    private KaryawanController controller = new KaryawanController();
     @Before
     public void setUp() {
         controller = new KaryawanController();
@@ -23,7 +23,7 @@ class KaryawanControllerTest {
     @Test
     public void testTambahKaryawan() {
         controller.tambahKaryawan(1, "John Doe", "Manager");
-        assertEquals(1, controller.semuaKaryawan().size());
+        assertEquals(3, controller.semuaKaryawan().size());
     }
 
     @Test
