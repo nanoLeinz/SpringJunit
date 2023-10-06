@@ -1,7 +1,7 @@
 package id.aplikasi.karyawan.model;
 
 public class KaryawanModel {
-    public int id;
+    public Integer id;
     public String nama;
     public String jabatan;
 
