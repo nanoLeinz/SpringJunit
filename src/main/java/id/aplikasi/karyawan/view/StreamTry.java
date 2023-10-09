@@ -28,7 +28,7 @@ public class StreamTry {
 
         //Average Age
         Double average = employeeList.stream().collect(Collectors.averagingInt(s -> s.getAges()));
-        System.out.println(average);
+        System.out.println("Rata-rata umur : " + average);
 
         Map<Character, List<Employee>> employeesGroupedByFirstChar = employeeList.stream()
                 .collect(Collectors.groupingBy(employee -> employee.getName().charAt(0)));
@@ -36,6 +36,7 @@ public class StreamTry {
         employeesGroupedByFirstChar.forEach((firstChar, employees) -> {
             System.out.println("Employees with names starting with " + firstChar + ":");
             employees.forEach(employee -> System.out.println(employee.getName()));
+            System.out.println("~~~");
         });
 
     }
