@@ -5,6 +5,8 @@ import id.aplikasi.karyawan.model.Employee;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StreamTry {
     public static void main(String[] args) {
@@ -23,9 +25,15 @@ public class StreamTry {
         employeeList.add(new Employee(9, "Emily Harris", LocalDateTime.of(1991, 9, 14, 0, 0), "606 Oak Street"));
         employeeList.add(new Employee(10, "Matthew Rodriguez", LocalDateTime.of(1982, 4, 3, 0, 0), "707 Pine Lane"));
 
+        Map<Character, List<String>> groupedNames = employeeList.stream()
+                .collect(Collectors.groupingBy(e -> e.getName().charAt(0)));
+//
+//        groupedNames.forEach((initial, group) -> {
+//            System.out.println("Names starting with " + initial + ": " + group
 
-
-
+        //Average Age
+        Double average = employeeList.stream().collect(Collectors.averagingInt(s -> s.getAges()));
+        System.out.println(average);
 
     }
 }
